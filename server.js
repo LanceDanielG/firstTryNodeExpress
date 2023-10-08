@@ -72,7 +72,7 @@ app.delete('/products/:id', async(req, res)=>{
 })
 
 mongoose.set('strictQuery', false)
-mongoose.connect('mongodb+srv://authnode:JYkRqT7YKYfWZ69R@authcluster.mducjmq.mongodb.net/nodeAuth?retryWrites=true&w=majority').then(()=>{
+mongoose.connect('mongoDBURI').then(()=>{
     console.log('Connected to MongoDB')
     app.listen(3000, ()=>{
         console.log('HELL NO CODE ~')
