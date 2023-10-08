@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose');
 const app = express()
 const Product = require('./models/productModel')
+require('dotenv').config();
+const mongoURI = process.env.MONGODB_URI;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -70,9 +72,9 @@ app.delete('/products/:id', async(req, res)=>{
         res.status(500).json({message: error.message})
     }
 })
-
+console.log(mongoURI)
 mongoose.set('strictQuery', false)
-mongoose.connect('mongodb+srv://authnode:JYkRqT7YKYfWZ69R@authcluster.mducjmq.mongodb.net/nodeAuth?retryWrites=true&w=majority').then(()=>{
+mongoose.connect(mongoURI).then(()=>{
     console.log('Connected to MongoDB')
     app.listen(3000, ()=>{
         console.log('HELL NO CODE ~')
